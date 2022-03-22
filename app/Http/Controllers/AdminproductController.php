@@ -36,13 +36,21 @@ class AdminproductController extends Controller
         $product->price = $validated['price'];
         $product->image = $fileName;
         $product->save();
-        return redirect()->back()->with('success', 'Product has been added');
+        return redirect()->route('product.index')->with('success', 'Product has been added');
 
     }
+    public function show(adminproduct $product)
+    {
+        // show single product
+        $product = adminproduct::findOrFail($product->id);
+        return view('admin.show', compact('product'));
+    }
+
    public function destroy($id)
     {
         $product = adminproduct::find($id);
         $product->delete();
         return redirect()->back()->with('success', 'Product has been deleted');
-    }   
+    }  
+   
 }

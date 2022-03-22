@@ -16,14 +16,24 @@
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
                         <p class="card-text">{{ $product->price }}</p>
-                        <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid">
+                        <a href="{{ route('product.show',['product'=>$product->id]) }}">
+                            <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid">
+                        </a>
                         {{-- <a href="{{ route('adminproduct.edit', $product->id) }}" class="btn btn-sm btn-primary">Edit</a> --}}
 
-                        <form action="{{ route('adminproduct.destroy',['product'=>$product->id]) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                        </form> 
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <form action="{{ route('adminproduct.destroy',['product'=>$product->id]) }}" method="POST" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form> 
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" id="id"
+                                    value="{{ $product->id }}">
+                                <input type="submit" value="Add to Cart" class="btn btn-sm btn-success">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
