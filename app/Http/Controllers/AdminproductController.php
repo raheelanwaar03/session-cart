@@ -23,7 +23,7 @@ class AdminproductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'image' => 'required',
-        ]);
+        ]); 
 
         $file = $request->file('image');
         $fileName = rand(1111,999999). '.'.  $file->getClientOriginalExtension();

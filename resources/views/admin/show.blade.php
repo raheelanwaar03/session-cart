@@ -1,10 +1,15 @@
 @extends('layout.app')
 @section('content')
     <div class="row">
+        <div class="col-12">
+        <h1 class="text-center">Product Details</h1>
+        <hr style="width: 300px">
+    </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="text-center">Product Details</h1>
                     <div class="row">
                         <div class="col-md-6">
                             <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid">

@@ -5,9 +5,14 @@
         <div class="col-12">
             <h1>Welcome !</h1>
             <h1>Add New Product</h1>
-            <a href="{{ route('adminproduct.create') }}" class="btn btn-sm btn-primary">Add New</a>
         </div>
     </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <a href="{{ route('adminproduct.create') }}" class="btn btn-primary">Add New</a>
+                <a href="{{ route('cart.index') }}" class="btn btn-primary my-2">View Cart</a>
+            </div>
+        </div>
     <div class="row">
         @foreach ($products as $product)
         <div class="col-4">
@@ -16,7 +21,7 @@
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
                         <p class="card-text">{{ $product->price }}</p>
-                        <a href="{{ route('product.show',['product'=>$product->id]) }}">
+                        <a href="{{ route('adminproduct.show',['product'=>$product->id]) }}">
                             <img src="{{ asset('images/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid">
                         </a>
                         {{-- <a href="{{ route('adminproduct.edit', $product->id) }}" class="btn btn-sm btn-primary">Edit</a> --}}
